@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "../screens";
+import CreateVisior from "../screens/createVisitor";
 
-export default function HomeRoutes() {
+export default function VisitorRoute() {
   const { Navigator, Screen } = createNativeStackNavigator();
 
   return (
@@ -10,7 +10,7 @@ export default function HomeRoutes() {
         headerShown: false,
       }}
     >
-      <Screen name="Home" component={HomeScreen} />
+      <Screen name="CreateVisitor" component={CreateVisior} />
     </Navigator>
   );
 }

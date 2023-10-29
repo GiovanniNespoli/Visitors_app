@@ -1,8 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import WelcomeRoutes from "../../modules/welcome/routes/welcome.routes";
-import HomeRoutes from "../../modules/home/routes/home.routes";
-import CreateDreamScreen from "../../modules/dreams/screens/CreateDreams";
-import TableDreamScreen from "../../modules/dreams/screens/TableDreams";
+import VisitorsRoutes from "../../modules/visitors/routes/visitors.routes";
 
 export default function PublicRoutes() {
   const { Navigator, Screen } = createNativeStackNavigator();
@@ -13,10 +10,7 @@ export default function PublicRoutes() {
         headerShown: false,
       }}
     >
-      <Screen name="welcomeModule" component={WelcomeRoutes} />
-      <Screen name="homeModule" component={HomeRoutes} />
-      <Screen name="createDreams" component={CreateDreamScreen} />
-      <Screen name="tableDreams" component={TableDreamScreen} />
+      <Screen name="visitorsModule" component={VisitorsRoutes} />
     </Navigator>
   );
 }
