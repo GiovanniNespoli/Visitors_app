@@ -4,6 +4,7 @@ export default {
   black: "#1A1A1A",
   yellow: "#E4B719",
   green: "#76BA3F",
+  shadowgreen: "rgba(118,186,63,0.25)",
   red: "#E43D19",
   white: "#F8F8F8",
   inputColors: "#A9CAD9",
@@ -12,5 +13,6 @@ export default {
     lightMontserratItalic: "Montserrat_300Light_Italic",
     montserrat400: "Montserrat_400Regular",
     montserratMedium: "Montserrat_500Medium",
+    montserratBold: "Montserrat_700Bold",
   },
 };

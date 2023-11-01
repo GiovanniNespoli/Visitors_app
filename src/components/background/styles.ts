@@ -12,6 +12,12 @@ export const Grid = styled.View`
   height: 100%;
 `;
 
+export const Body = styled.View`
+  height: 75%;
+  width: 100%;
+  align-items: center;
+`;
+
 export const Header = styled.View`
   width: 100%;
   height: 25%;
