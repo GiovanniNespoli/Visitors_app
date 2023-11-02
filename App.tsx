@@ -7,7 +7,8 @@ import {
 } from "@expo-google-fonts/dev";
 import Routes from "./src/routes/index.routes";
 import { StatusBar } from "expo-status-bar";
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
+import Toast from "react-native-toast-message";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -25,6 +26,7 @@ export default function App() {
     <>
       <StatusBar style="light" />
       <Routes />
+      <Toast />
     </>
   );
 }

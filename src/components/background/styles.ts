@@ -53,7 +53,7 @@ export const SubTitleContainer = styled.View`
   justify-content: space-between;
 `;
 export const SubTitle = styled.Text`
-  font-size: 24px;
+  font-size: 22px;
   font-family: ${theme.fonts.montserratMedium};
   text-transform: uppercase;
   color: ${theme.white};

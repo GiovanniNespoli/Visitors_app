@@ -21,12 +21,14 @@ interface IBackgroundProps {
   children: ReactNode;
   title: string;
   subTitle: string;
+  iconName: "user-plus" | "book";
 }
 
 export default function Background({
   children,
   subTitle,
   title,
+  iconName,
 }: IBackgroundProps) {
   const navigation = useNavigation();
 
@@ -49,7 +51,7 @@ export default function Background({
             <SubTitleContainer>
               <SubTitle>{subTitle}</SubTitle>
               <Icon>
-                <Feather name="user-plus" size={65} color={theme.white} />
+                <Feather name={iconName} size={65} color={theme.white} />
               </Icon>
             </SubTitleContainer>
           </Grid>

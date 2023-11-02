@@ -6,20 +6,7 @@ import {
 } from "@react-navigation/drawer";
 import CreateVisior from "../../modules/visitors/screens/createVisitor";
 import theme from "../../styles/theme";
-
-function CustomTest(props) {
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem
-        label={"lugares q n existe"}
-        onPress={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-    </DrawerContentScrollView>
-  );
-}
+import ListVisitors from "../../modules/visitors/screens/listVisitor";
 
 export default function PublicRoutes() {
   const { Navigator, Screen } = createDrawerNavigator();
@@ -29,14 +16,14 @@ export default function PublicRoutes() {
       screenOptions={{
         headerShown: false,
         drawerStyle: {
-          backgroundColor: theme.secondary,
+          backgroundColor: "#A9CBD9",
         },
         drawerActiveBackgroundColor: theme.white,
         drawerActiveTintColor: theme.black,
       }}
-      drawerContent={(props) => <CustomTest {...props} />}
     >
-      <Screen name="visitorsModule" component={CreateVisior} />
+      <Screen name="Listar visitante" component={ListVisitors} />
+      <Screen name="Cadastrar visitante" component={CreateVisior} />
     </Navigator>
   );
 }
