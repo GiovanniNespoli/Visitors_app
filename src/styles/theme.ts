@@ -8,6 +8,12 @@ export default {
   red: "#E43D19",
   white: "#F8F8F8",
   inputColors: "#A9CAD9",
+  listColor: "#CAE4F0",
+
+  deleteButton: {
+    disable: "rgba(228,61,25,0.5)",
+    textDisable: "rgba(255,255,255,0.4)",
+  },
 
   fonts: {
     lightMontserratItalic: "Montserrat_300Light_Italic",

@@ -18,6 +18,9 @@ export const FilterContent = styled.View`
   height: 50px;
   background-color: ${theme.inputColors};
   border-radius: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 `;
 export const FilterButton = styled.TouchableOpacity`
   width: 120px;
@@ -33,5 +36,32 @@ export const FilterText = styled.Text`
 export const ListContainer = styled.View`
   width: 100%;
   height: 70%;
-  background-color: red;
+  justify-content: space-between;
+`;
+export const ListHeader = styled.Text`
+  font-size: 20px;
+  color: ${theme.white};
+  font-family: ${theme.fonts.montserratMedium};
+`;
+export const List = styled.View`
+  width: 100%;
+  height: 70%;
+`;
+export const DeleteButtonContainer = styled.View`
+  width: 100%;
+  height: 15%;
+  align-items: center;
+  justify-content: center;
+`;
+export const DeleteButton = styled.TouchableOpacity`
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  background-color: ${theme.deleteButton.disable};
+`;
+export const DeleteText = styled.Text`
+  font-size: 20px;
+  font-family: ${theme.fonts.montserratBold};
+  color: ${theme.deleteButton.textDisable};
+  margin: auto;
 `;
