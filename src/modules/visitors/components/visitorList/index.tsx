@@ -12,18 +12,31 @@ interface IVistorListData {
   name: string;
   phone: string;
   date: string;
+  onPress(): void;
+  enable: boolean;
 }
 
-export default function VisitorList({ date, name, phone }: IVistorListData) {
+export default function VisitorList({
+  date,
+  name,
+  phone,
+  onPress,
+  enable,
+}: IVistorListData) {
   return (
-    <Container>
+    <Container
+      onPress={() => {
+        onPress();
+      }}
+      enable={enable}
+    >
       <Grid>
         <InformationContent>
-          <VisitorName>{name}</VisitorName>
-          <VisitorPhone>{phone}</VisitorPhone>
+          <VisitorName enable={enable}>{name}</VisitorName>
+          <VisitorPhone enable={enable}>{phone}</VisitorPhone>
         </InformationContent>
         <DateContent>
-          <VisitorDate>{date}</VisitorDate>
+          <VisitorDate enable={enable}>{date}</VisitorDate>
         </DateContent>
       </Grid>
     </Container>

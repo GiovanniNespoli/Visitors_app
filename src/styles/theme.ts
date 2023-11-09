@@ -11,8 +11,15 @@ export default {
   listColor: "#CAE4F0",
 
   deleteButton: {
+    enabled: "rgba(228,61,25)",
     disable: "rgba(228,61,25,0.5)",
     textDisable: "rgba(255,255,255,0.4)",
+    textEnable: "rgba(255,255,255,1)",
+  },
+
+  listVisitor: {
+    enable: "#6789A5",
+    enableBorder: "#36A624",
   },
 
   fonts: {

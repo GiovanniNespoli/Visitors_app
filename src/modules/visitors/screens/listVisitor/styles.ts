@@ -47,21 +47,4 @@ export const List = styled.View`
   width: 100%;
   height: 70%;
 `;
-export const DeleteButtonContainer = styled.View`
-  width: 100%;
-  height: 15%;
-  align-items: center;
-  justify-content: center;
-`;
-export const DeleteButton = styled.TouchableOpacity`
-  width: 100%;
-  height: 100%;
-  border-radius: 7px;
-  background-color: ${theme.deleteButton.disable};
-`;
-export const DeleteText = styled.Text`
-  font-size: 20px;
-  font-family: ${theme.fonts.montserratBold};
-  color: ${theme.deleteButton.textDisable};
-  margin: auto;
-`;
+

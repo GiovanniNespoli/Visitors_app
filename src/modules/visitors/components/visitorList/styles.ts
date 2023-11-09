@@ -1,12 +1,34 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import theme from "../../../../styles/theme";
 
-export const Container = styled.TouchableOpacity`
+function setBorderEnable(enable: boolean) {
+  if (enable) {
+    return css`
+      border: 2px ${theme.listVisitor.enableBorder} solid;
+    `;
+  }
+}
+
+function setColorEnable(enable: boolean) {
+  if (enable) {
+    return css`
+      color: ${theme.white};
+    `;
+  }
+
+  return css`
+    color: ${theme.black};
+  `;
+}
+
+export const Container = styled.TouchableOpacity<{ enable: boolean }>`
   width: 100%;
   height: 55px;
-  background-color: ${theme.listColor};
+  background-color: ${(props) =>
+    props.enable ? theme.listVisitor.enable : theme.listColor};
   border-radius: 10px;
   margin-top: 15px;
+  ${(props) => setBorderEnable(props.enable)};
 `;
 export const Grid = styled.View`
   width: 95%;
@@ -19,14 +41,14 @@ export const InformationContent = styled.View`
   height: 100%;
   justify-content: space-evenly;
 `;
-export const VisitorName = styled.Text`
+export const VisitorName = styled.Text<{ enable: boolean }>`
   font-size: 12px;
-  color: ${theme.black};
+  ${(props) => setColorEnable(props.enable)};
   font-family: ${theme.fonts.montserratMedium};
 `;
-export const VisitorPhone = styled.Text`
+export const VisitorPhone = styled.Text<{ enable: boolean }>`
   font-size: 12px;
-  color: rgba(0, 0, 0, 0.5);
+  ${(props) => setColorEnable(props.enable)};
   font-family: ${theme.fonts.montserratMedium};
 `;
 
@@ -37,8 +59,8 @@ export const DateContent = styled.View`
   align-items: flex-end;
 `;
 
-export const VisitorDate = styled.Text`
+export const VisitorDate = styled.Text<{ enable: boolean }>`
   font-size: 12px;
-  color: ${theme.black};
+  ${(props) => setColorEnable(props.enable)};
   font-family: ${theme.fonts.montserratMedium};
 `;
