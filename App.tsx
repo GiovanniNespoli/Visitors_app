@@ -9,6 +9,10 @@ import Routes from "./src/routes/index.routes";
 import { StatusBar } from "expo-status-bar";
 import "react-native-gesture-handler";
 import Toast from "react-native-toast-message";
+import AppProvider from "./src/hooks";
+import "moment/locale/pt-br";
+import moment from "moment";
+moment.locale("pt-br");
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -25,7 +29,9 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <Routes />
+      <AppProvider>
+        <Routes />
+      </AppProvider>
       <Toast />
     </>
   );

@@ -22,8 +22,8 @@ export default function PublicRoutes() {
         drawerActiveTintColor: theme.black,
       }}
     >
-      <Screen name="Listar visitante" component={ListVisitors} />
       <Screen name="Cadastrar visitante" component={CreateVisior} />
+      <Screen name="Listar visitante" component={ListVisitors} />
     </Navigator>
   );
 }

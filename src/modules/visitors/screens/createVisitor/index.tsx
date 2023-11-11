@@ -1,17 +1,17 @@
+import { useState } from "react";
 import Background from "../../../../components/background";
 import SubmitButton from "../../../../components/submitButton";
 import Input from "../../components/input";
+import { useVisitor } from "../../hooks";
 import { Container, Line } from "./styles";
-import Toast from "react-native-toast-message";
 
 export default function CreateVisior() {
-  const showToast = () => {
-    Toast.show({
-      type: "success",
-      text1: "Sucesso",
-      text2: "Cadastro realizado com sucesso ✅",
-    });
-  };
+  const { createVisitor } = useVisitor();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
   return (
     <Background
       iconName="user-plus"
@@ -19,14 +19,32 @@ export default function CreateVisior() {
       title="cadastro"
     >
       <Container>
-        <Input name="nome" />
-        <Input name="telefone" />
-        <Input name="email" />
+        <Input
+          inputText={(value) => {
+            setName(value);
+          }}
+          name="nome"
+        />
+        <Input
+          masked
+          inputText={(value) => {
+            setPhone(value);
+          }}
+          name="telefone"
+        />
+        <Input
+          inputText={(value) => {
+            setEmail(value);
+          }}
+          name="email"
+        />
         <Line></Line>
         <SubmitButton
           buttonText="cadastrar"
           onPress={() => {
-            showToast();
+            console.warn(name, email, phone);
+
+            createVisitor({ name, email, phone });
           }}
         ></SubmitButton>
       </Container>

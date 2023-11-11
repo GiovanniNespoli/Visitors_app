@@ -17,6 +17,11 @@ export default {
     textEnable: "rgba(255,255,255,1)",
   },
 
+  filterButton: {
+    enabled: "rgba(255,255,255,0.5)",
+    disable: "rgba(255,255,255,1)",
+  },
+
   listVisitor: {
     enable: "#6789A5",
     enableBorder: "#36A624",

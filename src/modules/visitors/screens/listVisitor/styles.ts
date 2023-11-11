@@ -1,5 +1,6 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import theme from "../../../../styles/theme";
+import { MaskedTextInput } from "react-native-mask-text";
 
 export const Container = styled.View`
   width: 100%;
@@ -22,10 +23,22 @@ export const FilterContent = styled.View`
   align-items: center;
   justify-content: space-evenly;
 `;
-export const FilterButton = styled.TouchableOpacity`
+function backgroundEnable(enableColor: boolean) {
+  if (!enableColor) {
+    return css`
+      background-color: ${theme.filterButton.disable};
+    `;
+  }
+
+  return css`
+    background-color: ${theme.filterButton.enabled};
+  `;
+}
+
+export const FilterButton = styled.TouchableOpacity<{ disableColor: boolean }>`
   width: 120px;
   height: 30px;
-  background-color: ${theme.white};
+  ${(props) => backgroundEnable(props.disableColor)}
   border-radius: 5px;
 `;
 export const FilterText = styled.Text`
@@ -47,4 +60,18 @@ export const List = styled.View`
   width: 100%;
   height: 70%;
 `;
+export const FilterButtonContent = styled.View`
+  width: 100%;
+  height: 50px;
 
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+`;
+export const MaskedTextInputStyled = styled(MaskedTextInput)`
+  width: 125px;
+  height: 50%;
+  background-color: ${theme.white};
+  border-radius: 5px;
+  padding-left: 10px;
+`;

@@ -1,9 +1,8 @@
 import styled from "styled-components/native";
 import theme from "../../../../styles/theme";
+import { MaskedTextInput } from "react-native-mask-text";
 
-export const Container = styled.View`
-  
-`;
+export const Container = styled.View``;
 export const InputName = styled.Text`
   color: ${theme.white};
   font-size: 15px;
@@ -19,6 +18,14 @@ export const TextInputContainer = styled.View`
   border: #fff 2px solid;
 `;
 export const TextInputStyles = styled.TextInput`
+  width: 100%;
+  height: 100%;
+  padding-left: 5px;
+  color: ${theme.white};
+  font-size: 16px;
+  font-family: ${theme.fonts.montserratMedium};
+`;
+export const MaskedInputStyles = styled(MaskedTextInput)`
   width: 100%;
   height: 100%;
   padding-left: 5px;
