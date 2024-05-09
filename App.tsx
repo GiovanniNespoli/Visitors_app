@@ -10,6 +10,7 @@ import { StatusBar } from "expo-status-bar";
 import "react-native-gesture-handler";
 import Toast from "react-native-toast-message";
 import AppProvider from "./src/hooks";
+import { NativeBaseProvider, Box } from "native-base";
 import "moment/locale/pt-br";
 import moment from "moment";
 moment.locale("pt-br");
@@ -27,12 +28,12 @@ export default function App() {
   }
 
   return (
-    <>
+    <NativeBaseProvider>
       <StatusBar style="light" />
       <AppProvider>
         <Routes />
       </AppProvider>
       <Toast />
-    </>
+    </NativeBaseProvider>
   );
 }

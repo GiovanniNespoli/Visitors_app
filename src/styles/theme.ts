@@ -1,14 +1,19 @@
 export default {
-  primary: "#032E3F",
+  primary: "#0070B2",
   secondary: "#6789A5",
+  
   black: "#1A1A1A",
   yellow: "#E4B719",
-  green: "#76BA3F",
-  shadowgreen: "rgba(118,186,63,0.25)",
   red: "#E43D19",
   white: "#F8F8F8",
+
+  green: "#76BA3F",
+  shadowgreen: "rgba(118,186,63,0.25)",
+
+
   inputColors: "#A9CAD9",
   listColor: "#CAE4F0",
+  background: "#dde7ee",
 
   deleteButton: {
     enabled: "rgba(228,61,25)",
