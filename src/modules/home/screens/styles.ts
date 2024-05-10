@@ -12,3 +12,4 @@ export const Grid = styled.View`
 
   margin: auto;
 `;
+

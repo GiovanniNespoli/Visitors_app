@@ -3,51 +3,20 @@ import Background from "../../../../components/background";
 import SubmitButton from "../../../../components/submitButton";
 import Input from "../../components/input";
 import { useVisitor } from "../../hooks";
-import { Container, Line } from "./styles";
+import { Container, Grid, Line } from "./styles";
+import Header from "../../../../components/Header";
+import FormStyled from "../../components/Form";
+import { useWindowDimensions } from "react-native";
 
-export default function CreateVisior() {
-  const { createVisitor } = useVisitor();
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+export default function CreateVisitor() {
+  const windowHeight = useWindowDimensions().height;
 
   return (
-    <Background
-      iconName="user-plus"
-      subTitle="cadastrar novo visitante"
-      title="cadastro"
-    >
-      <Container>
-        <Input
-          inputText={(value) => {
-            setName(value);
-          }}
-          name="nome"
-        />
-        <Input
-          masked
-          inputText={(value) => {
-            setPhone(value);
-          }}
-          name="telefone"
-        />
-        <Input
-          inputText={(value) => {
-            setEmail(value);
-          }}
-          name="email"
-        />
-        <Line></Line>
-        <SubmitButton
-          buttonText="cadastrar"
-          onPress={() => {
-            console.warn(name, email, phone);
-
-            createVisitor({ name, email, phone });
-          }}
-        ></SubmitButton>
-      </Container>
-    </Background>
+    <Container style={[{ minHeight: Math.round(windowHeight) }]}>
+      <Header />
+      <Grid>
+        <FormStyled />
+      </Grid>
+    </Container>
   );
 }

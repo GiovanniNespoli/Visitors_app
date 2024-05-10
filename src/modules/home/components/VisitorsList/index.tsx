@@ -21,15 +21,7 @@ import { Entypo } from "@expo/vector-icons";
 import { useVisitor } from "../../../visitors/hooks";
 import { useLayoutEffect } from "react";
 import { IListVisitorData } from "../../../visitors/interfaces/IVisitorData";
-
-const DATA = [
-  {
-    id: "1",
-    name: "First Item",
-    email: "ggnespoli@gmail.com",
-    phone: "(11) 95868-1449",
-  },
-];
+import Subtitle from "../../../../components/Subtitle";
 
 export default function VisitorsList() {
   const { list, listVisitor } = useVisitor();
@@ -79,10 +71,7 @@ export default function VisitorsList() {
 
   return (
     <Container>
-      <VisitorHeaderContainer>
-        <FontAwesome5 name="list-ul" size={24} color="black" />
-        <ListTitle>Lista de visitantes (08/05)</ListTitle>
-      </VisitorHeaderContainer>
+      <Subtitle title="Lista de visitantes" iconName="list-ul" />
       <VisitorFilterContainer>
         <Input
           w={{
