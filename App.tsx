@@ -1,3 +1,4 @@
+import React from "react";
 import {
   useFonts,
   Montserrat_300Light_Italic,
@@ -5,14 +6,21 @@ import {
   Montserrat_500Medium,
   Montserrat_700Bold,
 } from "@expo-google-fonts/dev";
+
 import Routes from "./src/routes/index.routes";
+
 import { StatusBar } from "expo-status-bar";
-import "react-native-gesture-handler";
 import Toast from "react-native-toast-message";
-import AppProvider from "./src/hooks";
-import { NativeBaseProvider, Box } from "native-base";
-import "moment/locale/pt-br";
+import { NativeBaseProvider } from "native-base";
+
 import moment from "moment";
+
+import "react-native-gesture-handler";
+import "moment/locale/pt-br";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./src/service/api";
+
 moment.locale("pt-br");
 
 export default function App() {
@@ -28,12 +36,12 @@ export default function App() {
   }
 
   return (
-    <NativeBaseProvider>
-      <StatusBar style="light" />
-      <AppProvider>
+    <QueryClientProvider client={queryClient}>
+      <NativeBaseProvider>
+        <StatusBar style="light" />
         <Routes />
-      </AppProvider>
-      <Toast />
-    </NativeBaseProvider>
+        <Toast />
+      </NativeBaseProvider>
+    </QueryClientProvider>
   );
 }

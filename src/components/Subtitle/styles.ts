@@ -7,7 +7,10 @@ export const VisitorHeaderContainer = styled.View`
 
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+`;
+
+export const IconContainer = styled.View`
+  width: 15%;
 `;
 
 export const ListTitle = styled.Text`

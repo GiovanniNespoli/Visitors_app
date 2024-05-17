@@ -1,36 +1,40 @@
-import { Icon, Input } from "native-base";
+import { HStack, Icon, Input, Spinner } from "native-base";
 import {
   Container,
   ExtraOptionsButton,
   ListContainer,
-  ListTitle,
   OptionsContainer,
   VisitorFilterContainer,
-  VisitorHeaderContainer,
   VisitorInformation,
   VisitorInformationContainer,
   VisitorListContainer,
 } from "./styles";
-import { FontAwesome5 } from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { FlatList, Text } from "react-native";
 import theme from "../../../../styles/theme";
 import { Feather } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import { useVisitor } from "../../../visitors/hooks";
-import { useLayoutEffect } from "react";
 import { IListVisitorData } from "../../../visitors/interfaces/IVisitorData";
 import Subtitle from "../../../../components/Subtitle";
+import { useQuery } from "@tanstack/react-query";
+import { GetVisitors } from "../../../visitors/api";
 
 export default function VisitorsList() {
-  const { list, listVisitor } = useVisitor();
+  const { data, isLoading } = useQuery({
+    queryKey: ["GETVISITORS"],
+    queryFn: GetVisitors,
+  });
 
-  useLayoutEffect(() => {
-    list();
-  }, [list]);
+  const LoadingData = () => {
+    return (
+      <HStack justifyContent="center" alignItems="center">
+        <Spinner size="lg" />
+      </HStack>
+    );
+  };
 
-  const VisitorListStyled = ({ id, email, name, phone }: IListVisitorData) => (
+  const VisitorListStyled = ({ email, name, phone }: IListVisitorData) => (
     <ListContainer>
       <VisitorInformationContainer>
         <VisitorInformation>
@@ -93,20 +97,24 @@ export default function VisitorsList() {
         />
       </VisitorFilterContainer>
       <VisitorListContainer>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={listVisitor}
-          renderItem={({ item }) => (
-            <VisitorListStyled
-              id={item.id}
-              name={item.name}
-              email={item.email}
-              phone={item.phone}
-              createdAt={item.createdAt}
-              updatedAt={item.updatedAt}
-            />
-          )}
-        />
+        {isLoading ? (
+          <LoadingData />
+        ) : (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={data}
+            renderItem={({ item }) => (
+              <VisitorListStyled
+                id={item.id}
+                name={item.name}
+                email={item.email}
+                phone={item.phone}
+                createdAt={item.createdAt}
+                updatedAt={item.updatedAt}
+              />
+            )}
+          />
+        )}
       </VisitorListContainer>
     </Container>
   );
