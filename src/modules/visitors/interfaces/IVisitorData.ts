@@ -13,4 +13,13 @@ interface IListVisitorData {
   updatedAt: string;
 }
 
-export { ICreateVisitorData, IListVisitorData };
+interface IFlatListVisitorData {
+  id: number;
+  index: number;
+  name: string;
+  phone: string;
+  email: string;
+  data: IListVisitorData[];
+}
+
+export { ICreateVisitorData, IListVisitorData, IFlatListVisitorData };

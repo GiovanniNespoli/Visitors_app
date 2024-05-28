@@ -13,6 +13,21 @@ export const GetVisitors = async () => {
   }
 };
 
+export const GetVisitorsByDate = async (day?: Date) => {
+  try {
+    if (day) {
+      const { data } = await api.get<IListVisitorData[]>(
+        `/visitors/filterPerDay/2024-05-28T03:00:00.000Z`
+      );
+      return data;
+    }
+
+    return [];
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const CreateVisitors = async ({
   name,
   email,

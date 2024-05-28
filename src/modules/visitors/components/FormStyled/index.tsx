@@ -12,12 +12,12 @@ import { ICreateVisitorData } from "../../interfaces/IVisitorData";
 import ReturnModal from "../ReturnModal";
 
 export default function FormStyled() {
-  
-
   const create = useMutation({
     mutationFn: CreateVisitors,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["GETVISITORS"] });
+      await queryClient.invalidateQueries({
+        queryKey: ["GETPERDAYVISITORS"],
+      });
     },
   });
 
