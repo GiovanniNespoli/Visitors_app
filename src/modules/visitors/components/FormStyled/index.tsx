@@ -9,15 +9,32 @@ import { useMutation } from "@tanstack/react-query";
 import { CreateVisitors } from "../../api";
 import { queryClient } from "../../../../service/api";
 import { ICreateVisitorData } from "../../interfaces/IVisitorData";
-import ReturnModal from "../ReturnModal";
+import StyledAlert from "../../../../components/StyledAlert";
+import { useEffect, useState } from "react";
+import { IAlertStatusEnum } from "../../../../interface/IAlertEnum";
 
 export default function FormStyled() {
   const create = useMutation({
     mutationFn: CreateVisitors,
+    onMutate: async () => {
+      console.log("mandando...");
+
+      setOpenAlert(false);
+    },
     onSuccess: async () => {
+      console.log("foi!!");
+
       await queryClient.invalidateQueries({
         queryKey: ["GETPERDAYVISITORS"],
       });
+      await queryClient.invalidateQueries({
+        queryKey: ["GETVISITORS"],
+      });
+
+      setOpenAlert(true);
+    },
+    onError: async () => {
+      console.log("não foi!!");
     },
   });
 
@@ -25,6 +42,7 @@ export default function FormStyled() {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       name: "",
@@ -32,13 +50,35 @@ export default function FormStyled() {
       phone: "",
     },
   });
+  const [openAlert, setOpenAlert] = useState<boolean>(false);
+
   const onSubmit = async (data: ICreateVisitorData) => {
-    create.mutate(data);
+    await create.mutateAsync(data);
+    reset();
   };
 
   return (
     <Container>
-      <ReturnModal openModal={false} />
+      {create.isError ? (
+        <StyledAlert
+          header="Visitante cadastrado!"
+          status={IAlertStatusEnum.error}
+          text="O cadastro do visitante foi realizado com sucesso!"
+          openAlert={openAlert}
+        />
+      ) : (
+        <></>
+      )}
+      {create.isSuccess ? (
+        <StyledAlert
+          header="Visitante cadastrado!"
+          status={IAlertStatusEnum.success}
+          text="O cadastro do visitante foi realizado com sucesso!"
+          openAlert={openAlert}
+        />
+      ) : (
+        <></>
+      )}
       <Subtitle iconName="user" title="Novo visitante" />
       <FormContent>
         <View>

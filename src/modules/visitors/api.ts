@@ -32,7 +32,7 @@ export const CreateVisitors = async ({
   name,
   email,
   phone,
-}: ICreateVisitorData) => {
+}: ICreateVisitorData): Promise<ICreateVisitorData | undefined> => {
   try {
     const { data } = await api.post<ICreateVisitorData>("/visitors", {
       name,
