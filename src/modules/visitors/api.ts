@@ -3,6 +3,7 @@ import {
   ICreateVisitorData,
   IListVisitorData,
 } from "./interfaces/IVisitorData";
+import { formatISO } from "date-fns";
 
 export const GetVisitors = async () => {
   try {
@@ -13,18 +14,19 @@ export const GetVisitors = async () => {
   }
 };
 
-export const GetVisitorsByDate = async (day?: Date) => {
+export const GetVisitorsByDate = async (day: Date) => {
   try {
-    if (day) {
-      const { data } = await api.get<IListVisitorData[]>(
-        `/visitors/filterPerDay/2024-05-28T03:00:00.000Z`
-      );
-      return data;
+    if (isNaN(day.getTime())) {
+      throw new RangeError("Invalid time value...");
     }
 
-    return [];
+    const { data } = await api.get<IListVisitorData[]>(
+      `/visitors/filterPerDay/${formatISO(day)}`
+    );
+    return data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };
 

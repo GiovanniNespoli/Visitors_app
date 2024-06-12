@@ -13,3 +13,11 @@ export const Grid = styled.View`
   margin: auto;
 `;
 
+export const VisitorFilterContainer = styled.View`
+  width: 100%;
+  height: 15%;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
