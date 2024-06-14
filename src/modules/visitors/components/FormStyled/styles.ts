@@ -14,11 +14,3 @@ export const FormContent = styled.View`
 
   justify-content: space-around;
 `;
-
-export const ErrorText = styled.Text`
-  font-size: 16px;
-  font-weight: bold;
-  color: ${theme.red};
-
-  padding-top: 10px;
-`;

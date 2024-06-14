@@ -1,7 +1,7 @@
 export default {
   primary: "#0070B2",
   secondary: "#6789A5",
-  
+
   black: "#1A1A1A",
   yellow: "#E4B719",
   red: "#E43D19",
@@ -10,6 +10,7 @@ export default {
   green: "#76BA3F",
   shadowgreen: "rgba(118,186,63,0.25)",
 
+  inputBorder: "#bfbfbf",
 
   inputColors: "#A9CAD9",
   listColor: "#CAE4F0",

@@ -1,17 +1,16 @@
-import { Controller, Form, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { View } from "react-native";
-import { Container, ErrorText, FormContent } from "./styles";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Input, Icon, Button } from "native-base";
-import Subtitle from "../../../../components/Subtitle";
-import theme from "../../../../styles/theme";
+import { Container, FormContent } from "./styles";
+import { Icon, Button } from "native-base";
 import { useMutation } from "@tanstack/react-query";
 import { CreateVisitors } from "../../api";
 import { queryClient } from "../../../../service/api";
 import { ICreateVisitorData } from "../../interfaces/IVisitorData";
 import StyledAlert from "../../../../components/StyledAlert";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IAlertStatusEnum } from "../../../../interface/IAlertEnum";
+import MaskedInput from "../InputStyled/MaskedInput";
+import Input from "../InputStyled/Input";
 
 export default function FormStyled() {
   const create = useMutation({
@@ -79,7 +78,6 @@ export default function FormStyled() {
       ) : (
         <></>
       )}
-      <Subtitle iconName="user" title="Novo visitante" />
       <FormContent>
         <View>
           <Controller
@@ -89,30 +87,14 @@ export default function FormStyled() {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
-                w={{
-                  base: "100%",
-                  md: "25%",
-                }}
-                borderRadius={10}
-                backgroundColor={theme.white}
-                borderWidth={2}
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
-                InputLeftElement={
-                  <Icon
-                    as={<MaterialIcons name="person" />}
-                    size={5}
-                    ml="2"
-                    color="muted.400"
-                  />
-                }
-                placeholder="Name"
+                placeholder="Nome"
               />
             )}
             name="name"
           />
-          {errors.name && <ErrorText>O campo está vazio</ErrorText>}
         </View>
 
         <View>
@@ -123,24 +105,10 @@ export default function FormStyled() {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
-                w={{
-                  base: "100%",
-                  md: "25%",
-                }}
-                borderRadius={10}
-                backgroundColor={theme.white}
-                borderWidth={2}
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
-                InputLeftElement={
-                  <Icon
-                    as={<MaterialIcons name="email" />}
-                    size={5}
-                    ml="2"
-                    color="muted.400"
-                  />
-                }
+                keyboardType="email-address"
                 placeholder="email"
               />
             )}
@@ -155,26 +123,11 @@ export default function FormStyled() {
               maxLength: 100,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                w={{
-                  base: "100%",
-                  md: "25%",
-                }}
-                borderRadius={10}
-                backgroundColor={theme.white}
-                borderWidth={2}
-                onBlur={onBlur}
+              <MaskedInput
                 onChangeText={onChange}
                 value={value}
-                InputLeftElement={
-                  <Icon
-                    as={<MaterialIcons name="phone" />}
-                    size={5}
-                    ml="2"
-                    color="muted.400"
-                  />
-                }
-                placeholder="Telefone"
+                onBlur={onBlur}
+                placeholder={"Telefone"}
               />
             )}
             name="phone"

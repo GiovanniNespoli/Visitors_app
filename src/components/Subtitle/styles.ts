@@ -17,3 +17,7 @@ export const ListTitle = styled.Text`
   font-size: 20px;
   font-family: ${theme.fonts.montserratBold};
 `;
+
+export const GoBackButton = styled.TouchableOpacity`
+  margin-right: 20px;
+`;

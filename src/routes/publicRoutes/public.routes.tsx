@@ -8,7 +8,7 @@ export default function PublicRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="Home" component={Home} />
-      <Screen name="Teste" component={CreateVistior} />
+      <Screen name="CreateUser" component={CreateVistior} />
     </Navigator>
   );
 }

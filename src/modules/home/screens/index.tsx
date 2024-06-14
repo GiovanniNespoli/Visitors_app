@@ -29,10 +29,6 @@ export default function Home({ navigation }) {
     if (data) return setVisitors(data);
   }, [data]);
 
-  useEffect(() => {
-    console.log("selected", visitors);
-  }, [visitors]);
-
   return (
     <Container style={[{ minHeight: Math.round(windowHeight) }]}>
       <DatePicker
@@ -52,7 +48,7 @@ export default function Home({ navigation }) {
         left={10}
         backgroundColor={theme.green}
         borderRadius={50}
-        onPress={() => navigation.navigate("Teste")}
+        onPress={() => navigation.navigate("CreateUser")}
         _icon={{
           as: Entypo,
           name: "plus",
