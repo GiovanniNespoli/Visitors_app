@@ -32,7 +32,7 @@ export default function StyledAlert({
   }, [openAlert]);
 
    return (
-    <Center style={{ position: "absolute", zIndex: 999, bottom: 50 }}>
+    <Center style={{ position: "absolute", zIndex: 999, bottom: 100 }}>
       <Collapse isOpen={show}>
         <Alert maxW="400" status={status}>
           <VStack space={1} flexShrink={1} w="100%">
