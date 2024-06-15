@@ -39,15 +39,15 @@ export default function VisitorModal({
         <Modal.Header marginBottom={-5}>Informação do usuário</Modal.Header>
         <Modal.Body>
           <LabelContent>
-            <Label>{visitor?.name}</Label>
+            <Label>{visitor?.name ? visitor.name : "Nome não informado"}</Label>
             <Divider />
           </LabelContent>
           <LabelContent>
-            <Label>{visitor?.email}</Label>
+            <Label>{visitor?.email ? visitor.email : "Email não informado"}</Label>
             <Divider />
           </LabelContent>
           <LabelContent>
-            <Label>{visitor?.phone}</Label>
+            <Label>{visitor?.phone ? visitor.phone : "Telefone não informado"}</Label>
             <Divider />
           </LabelContent>
           <Button

@@ -43,7 +43,7 @@ export default function StyledFlatList({
             size={24}
             color="black"
           />
-          <Text>{email}</Text>
+          <Text>{email.length ? email : "Email não informado"}</Text>
         </VisitorInformation>
         <VisitorInformation>
           <Feather
@@ -52,7 +52,7 @@ export default function StyledFlatList({
             size={24}
             color="black"
           />
-          <Text>{phone}</Text>
+          <Text>{phone.length ? phone : "Telefone não informado"}</Text>
         </VisitorInformation>
       </VisitorInformationContainer>
       <OptionsContainer>
