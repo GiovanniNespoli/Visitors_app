@@ -3,7 +3,7 @@ import { Container, Title } from "./styles";
 export default function Header() {
   return (
     <Container>
-      <Title>Apoio Torre forte</Title>
+      <Title>Acolhimento Torre forte</Title>
     </Container>
   );
 }

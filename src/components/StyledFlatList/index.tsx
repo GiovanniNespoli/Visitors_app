@@ -13,13 +13,17 @@ import {
   IListVisitorData,
 } from "../../modules/visitors/interfaces/IVisitorData";
 
+interface IStyledFlatList {
+  visitor: IFlatListVisitorData;
+  setOpenModal: (open: boolean) => void;
+  setVisitorData: (visitor: IListVisitorData) => void;
+}
+
 export default function StyledFlatList({
-  index,
-  email,
-  name,
-  phone,
-  data
-}: IFlatListVisitorData) {
+  visitor: { data, email, id, index, name, phone },
+  setOpenModal,
+  setVisitorData,
+}: IStyledFlatList) {
   return (
     <ListContainer lastItem={index === data?.length - 1}>
       <VisitorInformationContainer>
@@ -52,7 +56,19 @@ export default function StyledFlatList({
         </VisitorInformation>
       </VisitorInformationContainer>
       <OptionsContainer>
-        <ExtraOptionsButton onPress={() => {}}>
+        <ExtraOptionsButton
+          onPress={() => {
+            setVisitorData({
+              email,
+              id,
+              name,
+              phone,
+              createdAt: "",
+              updatedAt: "",
+            });
+            setOpenModal(true);
+          }}
+        >
           <Entypo name="dots-three-horizontal" size={24} color="white" />
         </ExtraOptionsButton>
       </OptionsContainer>
