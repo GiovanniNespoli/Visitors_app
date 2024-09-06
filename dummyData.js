@@ -9,15 +9,6 @@ export const dummyData = [
     updatedAt: "06/11/2023",
   },
   {
-    id: 2,
-    name: "Giovanna",
-    email: "teste@gmail.com",
-    phone: "(11)95868-1449",
-    date: "07/11/2023",
-    createdAt: "06/11/2023",
-    updatedAt: "06/11/2023",
-  },
-  {
     id: 3,
     name: "CreateUser",
     email: "teste@gmail.com",

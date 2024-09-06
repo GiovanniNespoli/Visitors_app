@@ -18,7 +18,7 @@ import moment from "moment";
 import "react-native-gesture-handler";
 import "moment/locale/pt-br";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./src/service/api";
 
 moment.locale("pt-br");
