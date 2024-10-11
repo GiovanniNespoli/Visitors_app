@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text } from "react-native";
 import { Feather, Fontisto, Entypo } from "@expo/vector-icons";
 import {
@@ -9,41 +9,45 @@ import {
   ExtraOptionsButton,
 } from "./styles";
 import {
-  IFlatListVisitorData,
   IListVisitorData,
+  IChurchData,
 } from "../../modules/visitors/interfaces/IVisitorData";
 
 interface IStyledFlatList {
-  visitor: IFlatListVisitorData;
+  index: number;
+  visitor?: IListVisitorData[];
+  church?: IChurchData[];
   setOpenModal: (open: boolean) => void;
   setVisitorData: (visitor: IListVisitorData) => void;
 }
 
 export default function StyledFlatList({
-  visitor: { data, email, id, index, name, phone },
+  index,
   setOpenModal,
   setVisitorData,
+  visitor,
+  church,
 }: IStyledFlatList) {
   return (
-    <ListContainer lastItem={index === data?.length - 1}>
+    <ListContainer lastItem={index === visitor?.length - 1}>
       <VisitorInformationContainer>
-        <VisitorInformation>
+        {/* <VisitorInformation>
           <Feather
             style={{ marginLeft: 10, marginRight: 10 }}
             name="user"
             size={24}
             color="black"
           />
-          <Text>{name}</Text>
-        </VisitorInformation>
-        <VisitorInformation>
+          <Text>{visitor ? visitor.name : church?.label}</Text>
+        </VisitorInformation> */}
+        {/* <VisitorInformation>
           <Fontisto
             style={{ marginLeft: 10, marginRight: 10 }}
             name="email"
             size={24}
             color="black"
           />
-          <Text>{email.length ? email : "Email não informado"}</Text>
+          <Text>{church.length ? church : "Email não informado"}</Text>
         </VisitorInformation>
         <VisitorInformation>
           <Feather
@@ -52,20 +56,21 @@ export default function StyledFlatList({
             size={24}
             color="black"
           />
-          <Text>{phone.length ? phone : "Telefone não informado"}</Text>
-        </VisitorInformation>
+          <Text>{phone?.length ? phone : "Telefone não informado"}</Text>
+        </VisitorInformation> */}
       </VisitorInformationContainer>
       <OptionsContainer>
         <ExtraOptionsButton
           onPress={() => {
-            setVisitorData({
-              email,
-              id,
-              name,
-              phone,
-              createdAt: "",
-              updatedAt: "",
-            });
+            // setVisitorData({
+            //   church,
+            //   id,
+            //   name,
+            //   phone,
+            //   createdAt: new Date(),
+            //   updatedAt: new Date(),
+            //   observation: "",
+            // });
             setOpenModal(true);
           }}
         >

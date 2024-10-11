@@ -1,13 +1,28 @@
 import { api } from "../../service/api";
 import {
+  IAllVisitorsData,
   ICreateVisitorData,
-  IListVisitorData,
 } from "./interfaces/IVisitorData";
 import { formatISO } from "date-fns";
 
 export const GetVisitors = async () => {
   try {
-    const { data } = await api.get<IListVisitorData[]>("/visitors");
+    const { data } = await api.get<IAllVisitorsData[]>("/visitors");
+
+    console.log("ALL");
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const GetTodayVisitors = async () => {
+  try {
+    const { data } = await api.get<IAllVisitorsData[]>("/visitors/perDay");
+
+    console.log("quando entra");
+
     return data;
   } catch (error) {
     console.log(error);
@@ -20,9 +35,12 @@ export const GetVisitorsByDate = async (day: Date) => {
       throw new RangeError("Invalid time value...");
     }
 
-    const { data } = await api.get<IListVisitorData[]>(
+    const { data } = await api.get<IAllVisitorsData[]>(
       `/visitors/filterPerDay/${formatISO(day)}`
     );
+
+    console.log("by date");
+
     return data;
   } catch (error) {
     console.log(error);

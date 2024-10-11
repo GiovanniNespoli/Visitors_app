@@ -3,12 +3,12 @@ import { useQuery } from "@tanstack/react-query";
 import { GetVisitorsByDate } from "../../../visitors/api";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { View } from "react-native";
-import { IListVisitorData } from "../../../visitors/interfaces/IVisitorData";
+import { IAllVisitorsData } from "../../../visitors/interfaces/IVisitorData";
 
 interface IFilterModalProps {
   show: boolean;
   closeModal: (value: boolean) => void;
-  selectData: (data: IListVisitorData[]) => void;
+  selectData: (data: IAllVisitorsData[]) => void;
 }
 
 export default function DatePicker({
